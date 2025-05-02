@@ -16,10 +16,9 @@ y = df['Yearly Amount Spent']
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# fefine SGD-regressor (gradient descent)
 sgd_model = SGDRegressor(max_iter=1000, eta0=0.01, learning_rate='invscaling', penalty=None, random_state=42)
 
-# perform 5-fold cross-validation
+#  cross-val
 cv_scores = cross_val_score(sgd_model, X_scaled, y, cv=5, scoring='r2')
 
 print("Cross-Validation R^2 scores:", cv_scores)
